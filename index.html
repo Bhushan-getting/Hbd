@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Aditya Anna</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            color: #333;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Background pattern */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 200, 200, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(200, 220, 255, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 200, 0.05) 0%, transparent 30%);
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 100%;
+            padding: 20px;
+        }
+        
+        /* Header Section */
+        .header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(255, 126, 95, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="%23ffffff" opacity="0.1" d="M0,0 L100,0 L100,30 Q75,50 50,30 Q25,10 0,30 Z"/></svg>');
+            background-size: 100% 100%;
+        }
+        
+        .header h1 {
+            font-size: 2.8rem;
+            color: white;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header h2 {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+        }
+        
+        .telugu-text {
+            font-size: 1.8rem;
+            color: white;
+            margin-top: 15px;
+            font-family: 'Segoe UI', 'Noto Sans Telugu', sans-serif;
+        }
+        
+        /* Hero Image */
+        .hero-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            overflow: hidden;
+            border: 8px solid white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero-image::after {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            border: 2px dashed #ff7e5f;
+            animation: spin 20s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Birthday Message */
+        .birthday-message {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-left: 8px solid #ff7e5f;
+        }
+        
+        .message-title {
+            color: #ff7e5f;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .message-title i {
+            margin-right: 15px;
+            font-size: 2rem;
+        }
+        
+        .message-content {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        
+        .telugu-wish {
+            font-size: 1.5rem;
+            color: #e67e22;
+            text-align: center;
+            margin: 25px 0;
+            padding: 15px;
+            background-color: #fff9f0;
+            border-radius: 15px;
+            font-family: 'Segoe UI', 'Noto Sans Telugu', sans-serif;
+            border: 2px dashed #ffb347;
+        }
+        
+        /* Wishes Section */
+        .wishes-section {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .wish-card {
+            background: white;
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease;
+        }
+        
+        .wish-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .wish-card h3 {
+            color: #ff7e5f;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .wish-card h3 i {
+            margin-right: 10px;
+        }
+        
+        .wish-card p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+        }
+        
+        /* Images Gallery */
+        .images-section {
+            margin-bottom: 40px;
+        }
+        
+        .images-title {
+            color: #ff7e5f;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        
+        .image-item {
+            border-radius: 15px;
+            overflow: hidden;
+            height: 150px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .image-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Smiley Animation */
+        .smiley-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 80px;
+            height: 80px;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(100px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .smiley-container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .smiley {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(255, 165, 0, 0.4);
+            animation: smileyFloat 3s ease-in-out infinite;
+        }
+        
+        .smiley::before, .smiley::after {
+            content: "";
+            position: absolute;
+            background-color: #333;
+            border-radius: 50%;
+        }
+        
+        .smiley::before {
+            width: 15px;
+            height: 15px;
+            top: 25px;
+            left: 20px;
+        }
+        
+        .smiley::after {
+            width: 15px;
+            height: 15px;
+            top: 25px;
+            right: 20px;
+        }
+        
+        .smiley-mouth {
+            position: absolute;
+            width: 40px;
+            height: 20px;
+            background-color: transparent;
+            border-bottom: 8px solid #333;
+            border-radius: 0 0 40px 40px;
+            bottom: 20px;
+        }
+        
+        @keyframes smileyFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        /* Music Player */
+        .music-player {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: white;
+            border-radius: 50px;
+            padding: 10px 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .music-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #ff7e5f;
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .music-btn:hover {
+            background: #ff6b4a;
+            transform: scale(1.1);
+        }
+        
+        .music-btn.playing {
+            background: #4CAF50;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+        }
+        
+        /* Music Permission Modal */
+        .music-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 400px;
+            text-align: center;
+            margin: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .modal-content h3 {
+            color: #ff7e5f;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .modal-content p {
+            color: #555;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .modal-btn {
+            background: #ff7e5f;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-btn:hover {
+            background: #ff6b4a;
+            transform: scale(1.05);
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #4b6cb7, #182848);
+            color: white;
+            border-radius: 20px;
+            margin-top: 40px;
+        }
+        
+        .footer h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .footer p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+        
+        .heart {
+            color: #ff7e5f;
+            animation: heartbeat 1.5s ease infinite;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .telugu-text {
+                font-size: 1.5rem;
+            }
+            
+            .hero-image {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .message-title {
+                font-size: 1.6rem;
+            }
+            
+            .image-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+            
+            .image-item {
+                height: 120px;
+            }
+            
+            .music-player {
+                top: 15px;
+                right: 15px;
+                padding: 8px 12px;
+            }
+            
+            .modal-content {
+                padding: 25px 20px;
+                margin: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header {
+                padding: 25px 15px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .header h2 {
+                font-size: 1.2rem;
+            }
+            
+            .telugu-text {
+                font-size: 1.3rem;
+            }
+            
+            .hero-image {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .birthday-message, .wish-card {
+                padding: 20px;
+            }
+            
+            .smiley-container {
+                width: 60px;
+                height: 60px;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .music-player span {
+                display: none;
+            }
+            
+            .music-player {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Music Permission Modal -->
+    <div class="music-modal" id="musicModal">
+        <div class="modal-content">
+            <h3><i class="fas fa-music"></i> Happy Birthday Music</h3>
+            <p>Click "Play Music" to enjoy birthday music in the background. Music will play at a low volume to enhance the celebration mood.</p>
+            <button class="modal-btn" id="startMusicBtn">
+                <i class="fas fa-play"></i> Play Birthday Music
+            </button>
+        </div>
+    </div>
+    
+    <!-- Background Music -->
+    <audio id="birthdayAudio" loop preload="auto">
+        <source src="https://assets.mixkit.co/music/preview/mixkit-happy-birthday-to-you-443.mp3" type="audio/mpeg">
+        <!-- Fallback music source -->
+        <source src="https://assets.mixkit.co/music/preview/mixkit-birthday-happy-woohoo-444.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Music Player -->
+    <div class="music-player">
+        <button class="music-btn" id="playBtn">
+            <i class="fas fa-play"></i>
+        </button>
+        <span>Happy Birthday Music</span>
+    </div>
+    
+    <!-- Smiley Face -->
+    <div class="smiley-container" id="smileyContainer">
+        <div class="smiley">
+            <div class="smiley-mouth"></div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Happy Birthday Aditya Anna!</h1>
+            <h2>Wishing you a day filled with happiness and joy</h2>
+            <div class="telugu-text">పుట్టినరోజు శుభాకాంక్షలు అదిత్య అన్న!</div>
+        </div>
+        
+        <!-- Hero Image -->
+        <div class="hero-image">
+            <!-- Using a placeholder birthday image - replace with actual image -->
+            <div style="width:100%;height:100%;background:linear-gradient(135deg, #ff7e5f, #feb47b);display:flex;align-items:center;justify-content:center;color:white;font-size:4rem;">
+                <i class="fas fa-birthday-cake"></i>
+            </div>
+        </div>
+        
+        <!-- Birthday Message -->
+        <div class="birthday-message">
+            <h2 class="message-title"><i class="fas fa-gift"></i> ప్రియమైన అదిత్య అన్నకు,</h2>
+            <p class="message-content">
+                మీ పుట్టినరోజు సందర్భంగా మీకు హృదయపూర్వక శుభాకాంక్షలు! మీ జీవితంలో ప్రతి రోజు సంతోషం, ఆరోగ్యం, శాంతితో నిండి ఉండాలని కోరుకుంటున్నాము. మీరు ఎల్లప్పుడూ మా కుటుంబానికి, స్నేహితులకు ఆధారస్తంభంగా ఉంటారు.
+            </p>
+            <div class="telugu-wish">
+                "మీ జీవితం సుఖమయం, సంతోషమయం, శాంతిమయం కావాలని ప్రార్థిస్తున్నాము!"
+            </div>
+            <p class="message-content">
+                May this year bring you closer to your dreams and fill your life with countless blessings. You deserve all the happiness in the world. Have a wonderful celebration with your loved ones!
+            </p>
+        </div>
+        
+        <!-- Wishes Section -->
+        <div class="wishes-section">
+            <div class="wish-card">
+                <h3><i class="fas fa-heart"></i> హృదయపూర్వక శుభాకాంక్షలు</h3>
+                <p>మీరు ఎంతో విలువైన వ్యక్తి. మీ స్నేహం, మార్గదర్శకత్వం మాకు చాలా ప్రియమైనవి. ఈ స్పెషల్ రోజున మీకు చాలా సంతోషం కలుగాలని కోరుకుంటున్నాము.</p>
+            </div>
+            
+            <div class="wish-card">
+                <h3><i class="fas fa-star"></i> Success & Prosperity</h3>
+                <p>May success follow you in everything you do. May you achieve all your goals and dreams. Wishing you prosperity and abundance in the coming year!</p>
+            </div>
+            
+            <div class="wish-card">
+                <h3><i class="fas fa-laugh-beam"></i> Health & Happiness</h3>
+                <p>Good health and happiness are the greatest treasures. May you be blessed with both in abundance. Stay happy, stay healthy, and keep smiling!</p>
+            </div>
+            
+            <div class="wish-card">
+                <h3><i class="fas fa-hands-helping"></i> మీకు ధన్యవాదాలు</h3>
+                <p>మీ సహాయం, మార్గదర్శకత్వం ఎప్పుడూ మాకు ధైర్యం నిస్తాయి. మీరు చేసిన ప్రతి ఉపకారానికి మేము ఎప్పటికీ కృతజ్ఞులుగా ఉంటాము. మీకు మా ప్రేమ, గౌరవం ఎప్పటికీ.</p>
+            </div>
+        </div>
+        
+        <!-- Images Section -->
+        <div class="images-section">
+            <h2 class="images-title"><i class="fas fa-images"></i> Birthday Memories</h2>
+            <div class="image-grid">
+                <div class="image-item">
+                    <div style="width:100%;height:100%;background:linear-gradient(135deg, #a1c4fd, #c2e9fb);display:flex;align-items:center;justify-content:center;color:white;font-size:3rem;">
+                        <i class="fas fa-birthday-cake"></i>
+                    </div>
+                </div>
+                <div class="image-item">
+                    <div style="width:100%;height:100%;background:linear-gradient(135deg, #ff9a9e, #fad0c4);display:flex;align-items:center;justify-content:center;color:white;font-size:3rem;">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                </div>
+                <div class="image-item">
+                    <div style="width:100%;height:100%;background:linear-gradient(135deg, #a18cd1, #fbc2eb);display:flex;align-items:center;justify-content:center;color:white;font-size:3rem;">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                </div>
+                <div class="image-item">
+                    <div style="width:100%;height:100%;background:linear-gradient(135deg, #ffecd2, #fcb69f);display:flex;align-items:center;justify-content:center;color:white;font-size:3rem;">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                </div>
+                <div class="image-item">
+                    <div style="width:100%;height:100%;background:linear-gradient(135deg, #84fab0, #8fd3f4);display:flex;align-items:center;justify-content:center;color:white;font-size:3rem;">
+                        <i class="fas fa-music"></i>
+                    </div>
+                </div>
+                <div class="image-item">
+                    <div style="width:100%;height:100%;background:linear-gradient(135deg, #d4fc79, #96e6a1);display:flex;align-items:center;justify-content:center;color:white;font-size:3rem;">
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <h3>Once Again, Happy Birthday!</h3>
+            <p>పుట్టినరోజు శుభాకాంక్షలు అదిత్య అన్న!</p>
+            <p>Wishing you a fantastic year ahead filled with love, laughter, and success.</p>
+            <p>Made with <span class="heart"><i class="fas fa-heart"></i></span> for Aditya Anna</p>
+            <p>From your loving family and friends</p>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const audio = document.getElementById('birthdayAudio');
+        const playBtn = document.getElementById('playBtn');
+        const musicModal = document.getElementById('musicModal');
+        const startMusicBtn = document.getElementById('startMusicBtn');
+        const smileyContainer = document.getElementById('smileyContainer');
+        
+        // Set initial volume (30% - soft volume)
+        audio.volume = 0.3;
+        
+        // Music state
+        let isPlaying = false;
+        let userInteracted = false;
+        
+        // Show music permission modal on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            // Show modal after a short delay
+            setTimeout(() => {
+                musicModal.style.display = 'flex';
+            }, 1000);
+        });
+        
+        // Start music when user clicks the modal button
+        startMusicBtn.addEventListener('click', function() {
+            userInteracted = true;
+            musicModal.style.display = 'none';
+            
+            // Try to play audio
+            const playPromise = audio.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    // Successfully started playing
+                    isPlaying = true;
+                    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    playBtn.classList.add('playing');
+                }).catch(error => {
+                    // Couldn't play audio
+                    console.log("Audio play failed:", error);
+                    alert("Could not play music. Please check your browser settings or try clicking the play button.");
+                    playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    playBtn.classList.remove('playing');
+                });
+            }
+        });
+        
+        // Toggle play/pause on music button click
+        playBtn.addEventListener('click', function() {
+            if (!userInteracted) {
+                userInteracted = true;
+            }
+            
+            if (isPlaying) {
+                audio.pause();
+                playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                playBtn.classList.remove('playing');
+            } else {
+                const playPromise = audio.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                        playBtn.classList.add('playing');
+                    }).catch(error => {
+                        console.log("Play failed:", error);
+                        alert("Could not play music. Please check your browser settings.");
+                    });
+                }
+            }
+            isPlaying = !isPlaying;
+        });
+        
+        // Handle audio events
+        audio.addEventListener('play', function() {
+            isPlaying = true;
+            playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            playBtn.classList.add('playing');
+        });
+        
+        audio.addEventListener('pause', function() {
+            isPlaying = false;
+            playBtn.innerHTML = '<i class="fas fa-play"></i>';
+            playBtn.classList.remove('playing');
+        });
+        
+        audio.addEventListener('ended', function() {
+            // If audio ends (shouldn't happen with loop), restart it
+            if (isPlaying) {
+                audio.currentTime = 0;
+                audio.play();
+            }
+        });
+        
+        // Smiley Face Animation on Scroll
+        let smileyVisible = false;
+        
+        window.addEventListener('scroll', function() {
+            // Show smiley when user scrolls down 200px
+            if (window.scrollY > 200 && !smileyVisible) {
+                smileyContainer.classList.add('visible');
+                smileyVisible = true;
+                
+                // Hide smiley after 5 seconds
+                setTimeout(function() {
+                    smileyContainer.classList.remove('visible');
+                    smileyVisible = false;
+                }, 5000);
+            }
+        });
+        
+        // Make smiley draggable on touch devices
+        let isDragging = false;
+        let startX, startY, initialX, initialY;
+        
+        smileyContainer.addEventListener('touchstart', function(e) {
+            isDragging = true;
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+            initialX = smileyContainer.offsetLeft;
+            initialY = smileyContainer.offsetTop;
+            e.preventDefault();
+        });
+        
+        smileyContainer.addEventListener('touchmove', function(e) {
+            if (!isDragging) return;
+            
+            const currentX = e.touches[0].clientX;
+            const currentY = e.touches[0].clientY;
+            
+            const diffX = currentX - startX;
+            const diffY = currentY - startY;
+            
+            smileyContainer.style.left = (initialX + diffX) + 'px';
+            smileyContainer.style.top = (initialY + diffY) + 'px';
+            smileyContainer.style.right = 'auto';
+            smileyContainer.style.bottom = 'auto';
+            
+            e.preventDefault();
+        });
+        
+        smileyContainer.addEventListener('touchend', function() {
+            isDragging = false;
+        });
+        
+        // Add some confetti effect on smiley click
+        smileyContainer.addEventListener('click', function() {
+            createConfetti();
+        });
+        
+        // Simple confetti effect
+        function createConfetti() {
+            const colors = ['#ff7e5f', '#feb47b', '#4b6cb7', '#182848', '#FFD700'];
+            
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.style.position = 'fixed';
+                    confetti.style.width = '10px';
+                    confetti.style.height = '10px';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.borderRadius = '50%';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.top = '-10px';
+                    confetti.style.zIndex = '999';
+                    
+                    document.body.appendChild(confetti);
+                    
+                    // Animate confetti falling
+                    const animation = confetti.animate([
+                        { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                        { transform: `translateY(${window.innerHeight + 10}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                    ], {
+                        duration: Math.random() * 2000 + 1000,
+                        easing: 'cubic-bezier(0.215, 0.610, 0.355, 1)'
+                    });
+                    
+                    animation.onfinish = () => {
+                        confetti.remove();
+                    };
+                }, i * 50);
+            }
+        }
+        
+        // Add some interactive effect to wish cards
+        document.querySelectorAll('.wish-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+                
+                // Play a subtle click sound if music is playing
+                if (isPlaying) {
+                    // Create a subtle pop sound using audio context
+                    try {
+                        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                        const oscillator = audioContext.createOscillator();
+                        const gainNode = audioContext.createGain();
+                        
+                        oscillator.connect(gainNode);
+                        gainNode.connect(audioContext.destination);
+                        
+                        oscillator.frequency.value = 800;
+                        oscillator.type = 'sine';
+                        
+                        gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+                        
+                        oscillator.start(audioContext.currentTime);
+                        oscillator.stop(audioContext.currentTime + 0.1);
+                    } catch (e) {
+                        console.log("Audio context not supported");
+                    }
+                }
+            });
+        });
+        
+        // Close modal if user clicks outside
+        window.addEventListener('click', function(event) {
+            if (event.target === musicModal) {
+                musicModal.style.display = 'none';
+                userInteracted = true;
+            }
+        });
+    </script>
+</body>
+</html>
