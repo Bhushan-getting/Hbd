@@ -14,291 +14,309 @@
         }
         
         body {
-            background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
-            color: #333;
-            min-height: 100vh;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: white;
             overflow-x: hidden;
+            min-height: 100vh;
         }
         
-        /* Background pattern */
-        body::before {
-            content: "";
+        /* Animated Background */
+        .animated-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 200, 200, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(200, 220, 255, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 50% 50%, rgba(255, 255, 200, 0.05) 0%, transparent 30%);
-            z-index: -1;
+            z-index: -2;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 100, 100, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(100, 100, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 255, 100, 0.1) 0%, transparent 50%);
+            animation: bgPulse 10s ease-in-out infinite;
         }
         
-        .container {
-            max-width: 100%;
-            padding: 20px;
-        }
-        
-        /* Header Section */
-        .header {
-            text-align: center;
-            padding: 30px 20px;
-            background: linear-gradient(135deg, #ff7e5f, #feb47b);
-            border-radius: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(255, 126, 95, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .header::before {
-            content: "";
-            position: absolute;
+        .floating-elements {
+            position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="%23ffffff" opacity="0.1" d="M0,0 L100,0 L100,30 Q75,50 50,30 Q25,10 0,30 Z"/></svg>');
-            background-size: 100% 100%;
-        }
-        
-        .header h1 {
-            font-size: 2.8rem;
-            color: white;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-        
-        .header h2 {
-            font-size: 1.5rem;
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 400;
-        }
-        
-        .telugu-text {
-            font-size: 1.8rem;
-            color: white;
-            margin-top: 15px;
-            font-family: 'Segoe UI', 'Noto Sans Telugu', sans-serif;
-        }
-        
-        /* Hero Image */
-        .hero-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin: 0 auto 30px;
-            overflow: hidden;
-            border: 8px solid white;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            position: relative;
-        }
-        
-        .hero-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            z-index: -1;
+            pointer-events: none;
         }
         
-        .hero-image::after {
-            content: "";
+        .floating-element {
             position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            border: 2px dashed #ff7e5f;
-            animation: spin 20s linear infinite;
+            animation: float 15s infinite linear;
         }
         
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        @keyframes bgPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
         }
         
-        /* Birthday Message */
-        .birthday-message {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            border-left: 8px solid #ff7e5f;
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
         }
         
-        .message-title {
-            color: #ff7e5f;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .message-title i {
-            margin-right: 15px;
-            font-size: 2rem;
-        }
-        
-        .message-content {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #555;
-            margin-bottom: 20px;
-        }
-        
-        .telugu-wish {
-            font-size: 1.5rem;
-            color: #e67e22;
-            text-align: center;
-            margin: 25px 0;
-            padding: 15px;
-            background-color: #fff9f0;
-            border-radius: 15px;
-            font-family: 'Segoe UI', 'Noto Sans Telugu', sans-serif;
-            border: 2px dashed #ffb347;
-        }
-        
-        /* Wishes Section */
-        .wishes-section {
+        /* Hero Section - Fullscreen */
+        .hero-section {
+            height: 100vh;
             display: flex;
             flex-direction: column;
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-        
-        .wish-card {
-            background: white;
-            border-radius: 18px;
-            padding: 25px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-            transition: transform 0.3s ease;
-        }
-        
-        .wish-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .wish-card h3 {
-            color: #ff7e5f;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            display: flex;
+            justify-content: center;
             align-items: center;
-        }
-        
-        .wish-card h3 i {
-            margin-right: 10px;
-        }
-        
-        .wish-card p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: #555;
-        }
-        
-        /* Images Gallery */
-        .images-section {
-            margin-bottom: 40px;
-        }
-        
-        .images-title {
-            color: #ff7e5f;
-            font-size: 1.8rem;
-            margin-bottom: 25px;
             text-align: center;
-        }
-        
-        .image-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 15px;
-        }
-        
-        .image-item {
-            border-radius: 15px;
+            padding: 20px;
+            position: relative;
             overflow: hidden;
-            height: 150px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
         }
         
-        .image-item:hover {
-            transform: scale(1.05);
-        }
-        
-        .image-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        /* Smiley Animation */
-        .smiley-container {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 80px;
-            height: 80px;
-            z-index: 1000;
+        .hero-content {
             opacity: 0;
-            transform: translateY(100px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: translateY(30px);
+            animation: heroReveal 1.5s ease forwards 0.5s;
+            max-width: 800px;
         }
         
-        .smiley-container.visible {
+        @keyframes heroReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .main-title {
+            font-size: 4.5rem;
+            background: linear-gradient(45deg, #ff7e5f, #feb47b, #4b6cb7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(255, 126, 95, 0.3);
+            animation: titleGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes titleGlow {
+            from { text-shadow: 0 0 30px rgba(255, 126, 95, 0.3); }
+            to { text-shadow: 0 0 50px rgba(255, 126, 95, 0.6); }
+        }
+        
+        .telugu-title {
+            font-size: 2.5rem;
+            color: #ffb347;
+            margin-bottom: 30px;
+            font-family: 'Segoe UI', 'Noto Sans Telugu', sans-serif;
+            animation: fadeInUp 1s ease forwards 1s;
+            opacity: 0;
+        }
+        
+        .birthday-year {
+            font-size: 8rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.1);
+            position: absolute;
+            bottom: -20px;
+            right: 50px;
+            animation: yearFloat 20s linear infinite;
+        }
+        
+        @keyframes yearFloat {
+            from { transform: translateY(0); }
+            to { transform: translateY(-100vh); }
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            opacity: 0;
+            animation-delay: 2s;
+            animation-fill-mode: forwards;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-20px) translateX(-50%); }
+            60% { transform: translateY(-10px) translateX(-50%); }
+        }
+        
+        /* Content Section */
+        .content-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 30px 30px 0 0;
+            padding: 80px 40px;
+            margin-top: -30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Fade In Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
         
-        .smiley {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            border-radius: 50%;
+        /* Sections */
+        .section {
+            margin-bottom: 60px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            border-left: 5px solid #ff7e5f;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            color: #ff7e5f;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
+            gap: 15px;
+        }
+        
+        .section-title i {
+            font-size: 2rem;
+        }
+        
+        /* Messages */
+        .message-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .message-card:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .simple-quote {
+            font-size: 1.8rem;
+            color: #ffb347;
+            font-style: italic;
+            text-align: center;
+            padding: 20px;
+            margin: 30px 0;
+            border-top: 2px solid rgba(255, 179, 71, 0.3);
+            border-bottom: 2px solid rgba(255, 179, 71, 0.3);
+        }
+        
+        /* Celebration Plans Button */
+        .celebration-btn {
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            display: block;
+            margin: 40px auto;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 126, 95, 0.3);
+        }
+        
+        .celebration-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 126, 95, 0.5);
+        }
+        
+        /* Funny Modal */
+        .funny-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            align-items: center;
             justify-content: center;
+            z-index: 1000;
+            animation: modalFadeIn 0.5s ease;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .funny-content {
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 500px;
+            margin: 20px;
+            animation: modalBounce 0.8s ease;
             position: relative;
-            box-shadow: 0 5px 20px rgba(255, 165, 0, 0.4);
-            animation: smileyFloat 3s ease-in-out infinite;
+            overflow: hidden;
         }
         
-        .smiley::before, .smiley::after {
-            content: "";
+        @keyframes modalBounce {
+            0% { transform: scale(0.5); opacity: 0; }
+            70% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .funny-content::before {
+            content: "🎉";
+            font-size: 100px;
             position: absolute;
-            background-color: #333;
-            border-radius: 50%;
+            top: -50px;
+            left: -50px;
+            opacity: 0.3;
+            transform: rotate(-45deg);
         }
         
-        .smiley::before {
-            width: 15px;
-            height: 15px;
-            top: 25px;
-            left: 20px;
-        }
-        
-        .smiley::after {
-            width: 15px;
-            height: 15px;
-            top: 25px;
-            right: 20px;
-        }
-        
-        .smiley-mouth {
+        .funny-content::after {
+            content: "🎂";
+            font-size: 100px;
             position: absolute;
-            width: 40px;
-            height: 20px;
-            background-color: transparent;
-            border-bottom: 8px solid #333;
-            border-radius: 0 0 40px 40px;
-            bottom: 20px;
+            bottom: -50px;
+            right: -50px;
+            opacity: 0.3;
+            transform: rotate(45deg);
         }
         
-        @keyframes smileyFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+        .funny-text {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .close-modal {
+            background: #4b6cb7;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .close-modal:hover {
+            background: #182848;
+            transform: scale(1.1);
         }
         
         /* Music Player */
@@ -306,14 +324,15 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            z-index: 1001;
-            background: white;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
             border-radius: 50px;
-            padding: 10px 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 12px 20px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
+            z-index: 100;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .music-btn {
@@ -321,13 +340,12 @@
             height: 40px;
             border-radius: 50%;
             background: #ff7e5f;
-            color: white;
             border: none;
+            color: white;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            font-size: 1.2rem;
             transition: all 0.3s ease;
         }
         
@@ -343,197 +361,77 @@
         
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
+            70% { box-shadow: 0 0 0 15px rgba(76, 175, 80, 0); }
             100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
         }
         
-        /* Music Permission Modal */
-        .music-modal {
+        /* Confetti */
+        .confetti {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
+            width: 15px;
+            height: 15px;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 999;
         }
         
-        .modal-content {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            max-width: 400px;
-            text-align: center;
-            margin: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .modal-content h3 {
-            color: #ff7e5f;
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-        }
-        
-        .modal-content p {
-            color: #555;
-            margin-bottom: 25px;
-            line-height: 1.6;
-        }
-        
-        .modal-btn {
-            background: #ff7e5f;
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .modal-btn:hover {
-            background: #ff6b4a;
-            transform: scale(1.05);
-        }
-        
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 30px 20px;
-            background: linear-gradient(135deg, #4b6cb7, #182848);
-            color: white;
-            border-radius: 20px;
-            margin-top: 40px;
-        }
-        
-        .footer h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-        }
-        
-        .footer p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 10px;
-        }
-        
-        .heart {
-            color: #ff7e5f;
-            animation: heartbeat 1.5s ease infinite;
-        }
-        
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-        
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.2rem;
+            .main-title {
+                font-size: 3rem;
             }
             
-            .telugu-text {
-                font-size: 1.5rem;
+            .telugu-title {
+                font-size: 1.8rem;
             }
             
-            .hero-image {
-                width: 180px;
-                height: 180px;
+            .birthday-year {
+                font-size: 5rem;
+                right: 20px;
             }
             
-            .message-title {
-                font-size: 1.6rem;
+            .section {
+                padding: 20px;
             }
             
-            .image-grid {
-                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            .section-title {
+                font-size: 1.8rem;
             }
             
-            .image-item {
-                height: 120px;
-            }
-            
-            .music-player {
-                top: 15px;
-                right: 15px;
-                padding: 8px 12px;
-            }
-            
-            .modal-content {
-                padding: 25px 20px;
-                margin: 15px;
+            .content-section {
+                padding: 60px 20px;
             }
         }
         
         @media (max-width: 480px) {
-            .container {
-                padding: 15px;
+            .main-title {
+                font-size: 2.5rem;
             }
             
-            .header {
-                padding: 25px 15px;
+            .telugu-title {
+                font-size: 1.5rem;
             }
             
-            .header h1 {
-                font-size: 1.8rem;
-            }
-            
-            .header h2 {
-                font-size: 1.2rem;
-            }
-            
-            .telugu-text {
-                font-size: 1.3rem;
-            }
-            
-            .hero-image {
-                width: 150px;
-                height: 150px;
-            }
-            
-            .birthday-message, .wish-card {
-                padding: 20px;
-            }
-            
-            .smiley-container {
-                width: 60px;
-                height: 60px;
-                bottom: 20px;
-                right: 20px;
-            }
-            
-            .music-player span {
-                display: none;
+            .birthday-year {
+                font-size: 4rem;
             }
             
             .music-player {
-                padding: 8px;
+                top: 10px;
+                right: 10px;
+                padding: 8px 15px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Music Permission Modal -->
-    <div class="music-modal" id="musicModal">
-        <div class="modal-content">
-            <h3><i class="fas fa-music"></i> Happy Birthday Music</h3>
-            <p>Click "Play Music" to enjoy birthday music in the background. Music will play at a low volume to enhance the celebration mood.</p>
-            <button class="modal-btn" id="startMusicBtn">
-                <i class="fas fa-play"></i> Play Birthday Music
-            </button>
-        </div>
-    </div>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+    <div class="floating-elements" id="floatingElements"></div>
     
     <!-- Background Music -->
     <audio id="birthdayAudio" loop preload="auto">
         <source src="https://assets.mixkit.co/music/preview/mixkit-happy-birthday-to-you-443.mp3" type="audio/mpeg">
-        <!-- Fallback music source -->
-        <source src="https://assets.mixkit.co/music/preview/mixkit-birthday-happy-woohoo-444.mp3" type="audio/mpeg">
     </audio>
     
     <!-- Music Player -->
@@ -541,340 +439,291 @@
         <button class="music-btn" id="playBtn">
             <i class="fas fa-play"></i>
         </button>
-        <span>Happy Birthday Music</span>
+        <span>Birthday Music</span>
     </div>
     
-    <!-- Smiley Face -->
-    <div class="smiley-container" id="smileyContainer">
-        <div class="smiley">
-            <div class="smiley-mouth"></div>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="main-title">Happy Birthday Aditya Anna!</h1>
+            <div class="telugu-title">పుట్టినరోజు శుభాకాంక్షలు అదిత్య అన్న!</div>
+            
+            <div style="margin-top: 40px;">
+                <p style="font-size: 1.3rem; opacity: 0.8; margin-bottom: 20px;">
+                    May your special day be as wonderful as you are!
+                </p>
+                <div style="font-size: 2rem; animation: heartBeat 1.5s infinite;">
+                    🎂 🎉 🎁
+                </div>
+            </div>
         </div>
-    </div>
+        
+        <div class="birthday-year">2024</div>
+        
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down" style="font-size: 2rem; color: #ff7e5f;"></i>
+        </div>
+    </section>
     
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <h1>Happy Birthday Aditya Anna!</h1>
-            <h2>Wishing you a day filled with happiness and joy</h2>
-            <div class="telugu-text">పుట్టినరోజు శుభాకాంక్షలు అదిత్య అన్న!</div>
-        </div>
-        
-        <!-- Hero Image -->
-        <div class="hero-image">
-            <!-- Using a placeholder birthday image - replace with actual image -->
-            <div style="width:100%;height:100%;background:linear-gradient(135deg, #ff7e5f, #feb47b);display:flex;align-items:center;justify-content:center;color:white;font-size:4rem;">
-                <i class="fas fa-birthday-cake"></i>
+    <!-- Content Section -->
+    <section class="content-section">
+        <!-- Simple Quotes Section -->
+        <div class="section fade-in">
+            <h2 class="section-title"><i class="fas fa-quote-left"></i> Simple Wishes</h2>
+            
+            <div class="simple-quote">
+                "The more you praise and celebrate your life, the more there is in life to celebrate."
+            </div>
+            
+            <div class="message-card fade-in">
+                <p style="font-size: 1.2rem; line-height: 1.8;">
+                    Every year with you has been a blessing. May this birthday bring you closer to all your dreams and fill your life with joy and prosperity.
+                </p>
+            </div>
+            
+            <div class="simple-quote">
+                "గుడ్ హెల్త్ అండ్ గుడ్ లక్ విత్ యూ ఓన్ ఈయర్ ఓల్డర్!"
             </div>
         </div>
         
-        <!-- Birthday Message -->
-        <div class="birthday-message">
-            <h2 class="message-title"><i class="fas fa-gift"></i> ప్రియమైన అదిత్య అన్నకు,</h2>
-            <p class="message-content">
-                మీ పుట్టినరోజు సందర్భంగా మీకు హృదయపూర్వక శుభాకాంక్షలు! మీ జీవితంలో ప్రతి రోజు సంతోషం, ఆరోగ్యం, శాంతితో నిండి ఉండాలని కోరుకుంటున్నాము. మీరు ఎల్లప్పుడూ మా కుటుంబానికి, స్నేహితులకు ఆధారస్తంభంగా ఉంటారు.
+        <!-- Celebration Plans (Funny Button) -->
+        <div class="section fade-in">
+            <h2 class="section-title"><i class="fas fa-calendar-alt"></i> Celebration Plans</h2>
+            
+            <div class="message-card">
+                <p style="font-size: 1.2rem; line-height: 1.8;">
+                    We had so many plans to celebrate your special day - party, trip, surprises... but looks like someone had other plans! 😉
+                </p>
+            </div>
+            
+            <button class="celebration-btn" id="celebrationBtn">
+                <i class="fas fa-birthday-cake"></i> Click to See Celebration Plans
+            </button>
+        </div>
+        
+        <!-- Heartfelt Message -->
+        <div class="section fade-in">
+            <h2 class="section-title"><i class="fas fa-heart"></i> From All of Us</h2>
+            
+            <div class="message-card">
+                <p style="font-size: 1.2rem; line-height: 1.8;">
+                    You are an amazing person who brings light wherever you go. Your kindness, wisdom, and humor make you special to everyone.
+                </p>
+            </div>
+            
+            <div class="simple-quote">
+                "మీరు అద్భుతమైన వ్యక్తి, మీకు ఎప్పటికీ ఆరోగ్యం, సంతోషం ఉండాలని కోరుకుంటున్నాము."
+            </div>
+            
+            <div class="message-card">
+                <p style="font-size: 1.2rem; line-height: 1.8;">
+                    May this year bring you success in all your endeavors, good health, and moments that become beautiful memories.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Final Wish -->
+        <div class="section fade-in" style="text-align: center; background: rgba(255, 126, 95, 0.1);">
+            <h2 class="section-title"><i class="fas fa-star"></i> Once Again</h2>
+            <div style="font-size: 2.5rem; color: #ffb347; margin: 30px 0;">
+                Happy Birthday Anna! 🎈
+            </div>
+            <p style="font-size: 1.3rem; opacity: 0.9;">
+                With lots of love and best wishes from everyone who cares about you!
             </p>
-            <div class="telugu-wish">
-                "మీ జీవితం సుఖమయం, సంతోషమయం, శాంతిమయం కావాలని ప్రార్థిస్తున్నాము!"
-            </div>
-            <p class="message-content">
-                May this year bring you closer to your dreams and fill your life with countless blessings. You deserve all the happiness in the world. Have a wonderful celebration with your loved ones!
-            </p>
         </div>
-        
-        <!-- Wishes Section -->
-        <div class="wishes-section">
-            <div class="wish-card">
-                <h3><i class="fas fa-heart"></i> హృదయపూర్వక శుభాకాంక్షలు</h3>
-                <p>మీరు ఎంతో విలువైన వ్యక్తి. మీ స్నేహం, మార్గదర్శకత్వం మాకు చాలా ప్రియమైనవి. ఈ స్పెషల్ రోజున మీకు చాలా సంతోషం కలుగాలని కోరుకుంటున్నాము.</p>
+    </section>
+    
+    <!-- Funny Modal -->
+    <div class="funny-modal" id="funnyModal">
+        <div class="funny-content">
+            <div class="funny-text">
+                🤣 Oops! <br><br>
+                You cancelled the celebration plans! <br><br>
+                Then why are you clicking this button? 😂 <br><br>
+                Just kidding! We'll celebrate whenever you're ready! 🎉
             </div>
-            
-            <div class="wish-card">
-                <h3><i class="fas fa-star"></i> Success & Prosperity</h3>
-                <p>May success follow you in everything you do. May you achieve all your goals and dreams. Wishing you prosperity and abundance in the coming year!</p>
-            </div>
-            
-            <div class="wish-card">
-                <h3><i class="fas fa-laugh-beam"></i> Health & Happiness</h3>
-                <p>Good health and happiness are the greatest treasures. May you be blessed with both in abundance. Stay happy, stay healthy, and keep smiling!</p>
-            </div>
-            
-            <div class="wish-card">
-                <h3><i class="fas fa-hands-helping"></i> మీకు ధన్యవాదాలు</h3>
-                <p>మీ సహాయం, మార్గదర్శకత్వం ఎప్పుడూ మాకు ధైర్యం నిస్తాయి. మీరు చేసిన ప్రతి ఉపకారానికి మేము ఎప్పటికీ కృతజ్ఞులుగా ఉంటాము. మీకు మా ప్రేమ, గౌరవం ఎప్పటికీ.</p>
-            </div>
-        </div>
-        
-        <!-- Images Section -->
-        <div class="images-section">
-            <h2 class="images-title"><i class="fas fa-images"></i> Birthday Memories</h2>
-            <div class="image-grid">
-                <div class="image-item">
-                    <div style="width:100%;height:100%;background:linear-gradient(135deg, #a1c4fd, #c2e9fb);display:flex;align-items:center;justify-content:center;color:white;font-size:3rem;">
-                        <i class="fas fa-birthday-cake"></i>
-                    </div>
-                </div>
-                <div class="image-item">
-                    <div style="width:100%;height:100%;background:linear-gradient(135deg, #ff9a9e, #fad0c4);display:flex;align-items:center;justify-content:center;color:white;font-size:3rem;">
-                        <i class="fas fa-gift"></i>
-                    </div>
-                </div>
-                <div class="image-item">
-                    <div style="width:100%;height:100%;background:linear-gradient(135deg, #a18cd1, #fbc2eb);display:flex;align-items:center;justify-content:center;color:white;font-size:3rem;">
-                        <i class="fas fa-glass-cheers"></i>
-                    </div>
-                </div>
-                <div class="image-item">
-                    <div style="width:100%;height:100%;background:linear-gradient(135deg, #ffecd2, #fcb69f);display:flex;align-items:center;justify-content:center;color:white;font-size:3rem;">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                </div>
-                <div class="image-item">
-                    <div style="width:100%;height:100%;background:linear-gradient(135deg, #84fab0, #8fd3f4);display:flex;align-items:center;justify-content:center;color:white;font-size:3rem;">
-                        <i class="fas fa-music"></i>
-                    </div>
-                </div>
-                <div class="image-item">
-                    <div style="width:100%;height:100%;background:linear-gradient(135deg, #d4fc79, #96e6a1);display:flex;align-items:center;justify-content:center;color:white;font-size:3rem;">
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Footer -->
-        <div class="footer">
-            <h3>Once Again, Happy Birthday!</h3>
-            <p>పుట్టినరోజు శుభాకాంక్షలు అదిత్య అన్న!</p>
-            <p>Wishing you a fantastic year ahead filled with love, laughter, and success.</p>
-            <p>Made with <span class="heart"><i class="fas fa-heart"></i></span> for Aditya Anna</p>
-            <p>From your loving family and friends</p>
+            <button class="close-modal" id="closeModal">OK, Got it! 😄</button>
         </div>
     </div>
 
     <script>
-        // DOM Elements
+        // Create floating background elements
+        function createFloatingElements() {
+            const container = document.getElementById('floatingElements');
+            const colors = [
+                'rgba(255, 126, 95, 0.2)',
+                'rgba(254, 180, 123, 0.2)',
+                'rgba(75, 108, 183, 0.2)',
+                'rgba(255, 179, 71, 0.2)'
+            ];
+            
+            for (let i = 0; i < 20; i++) {
+                const element = document.createElement('div');
+                element.className = 'floating-element';
+                
+                const size = Math.random() * 100 + 20;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                element.style.width = `${size}px`;
+                element.style.height = `${size}px`;
+                element.style.background = color;
+                element.style.left = `${Math.random() * 100}%`;
+                element.style.top = `${Math.random() * 100}%`;
+                element.style.animationDuration = `${Math.random() * 20 + 10}s`;
+                element.style.animationDelay = `${Math.random() * 5}s`;
+                
+                container.appendChild(element);
+            }
+        }
+        
+        // Scroll animations
+        function setupScrollAnimations() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        }
+        
+        // Music player
         const audio = document.getElementById('birthdayAudio');
         const playBtn = document.getElementById('playBtn');
-        const musicModal = document.getElementById('musicModal');
-        const startMusicBtn = document.getElementById('startMusicBtn');
-        const smileyContainer = document.getElementById('smileyContainer');
+        let isPlaying = false;
         
-        // Set initial volume (30% - soft volume)
         audio.volume = 0.3;
         
-        // Music state
-        let isPlaying = false;
-        let userInteracted = false;
-        
-        // Show music permission modal on page load
-        window.addEventListener('DOMContentLoaded', function() {
-            // Show modal after a short delay
-            setTimeout(() => {
-                musicModal.style.display = 'flex';
-            }, 1000);
-        });
-        
-        // Start music when user clicks the modal button
-        startMusicBtn.addEventListener('click', function() {
-            userInteracted = true;
-            musicModal.style.display = 'none';
-            
-            // Try to play audio
-            const playPromise = audio.play();
-            
-            if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    // Successfully started playing
-                    isPlaying = true;
-                    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                    playBtn.classList.add('playing');
-                }).catch(error => {
-                    // Couldn't play audio
-                    console.log("Audio play failed:", error);
-                    alert("Could not play music. Please check your browser settings or try clicking the play button.");
-                    playBtn.innerHTML = '<i class="fas fa-play"></i>';
-                    playBtn.classList.remove('playing');
-                });
-            }
-        });
-        
-        // Toggle play/pause on music button click
         playBtn.addEventListener('click', function() {
-            if (!userInteracted) {
-                userInteracted = true;
-            }
-            
             if (isPlaying) {
                 audio.pause();
                 playBtn.innerHTML = '<i class="fas fa-play"></i>';
                 playBtn.classList.remove('playing');
             } else {
-                const playPromise = audio.play();
-                
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                        playBtn.classList.add('playing');
-                    }).catch(error => {
-                        console.log("Play failed:", error);
-                        alert("Could not play music. Please check your browser settings.");
-                    });
-                }
+                audio.play().then(() => {
+                    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    playBtn.classList.add('playing');
+                }).catch(e => {
+                    console.log("Autoplay prevented:", e);
+                    // User interaction needed, show alert
+                    alert("Please click the music button again to play birthday music!");
+                });
             }
             isPlaying = !isPlaying;
         });
         
-        // Handle audio events
-        audio.addEventListener('play', function() {
-            isPlaying = true;
-            playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            playBtn.classList.add('playing');
-        });
+        // Funny modal
+        const celebrationBtn = document.getElementById('celebrationBtn');
+        const funnyModal = document.getElementById('funnyModal');
+        const closeModal = document.getElementById('closeModal');
         
-        audio.addEventListener('pause', function() {
-            isPlaying = false;
-            playBtn.innerHTML = '<i class="fas fa-play"></i>';
-            playBtn.classList.remove('playing');
-        });
-        
-        audio.addEventListener('ended', function() {
-            // If audio ends (shouldn't happen with loop), restart it
-            if (isPlaying) {
-                audio.currentTime = 0;
-                audio.play();
-            }
-        });
-        
-        // Smiley Face Animation on Scroll
-        let smileyVisible = false;
-        
-        window.addEventListener('scroll', function() {
-            // Show smiley when user scrolls down 200px
-            if (window.scrollY > 200 && !smileyVisible) {
-                smileyContainer.classList.add('visible');
-                smileyVisible = true;
-                
-                // Hide smiley after 5 seconds
-                setTimeout(function() {
-                    smileyContainer.classList.remove('visible');
-                    smileyVisible = false;
-                }, 5000);
-            }
-        });
-        
-        // Make smiley draggable on touch devices
-        let isDragging = false;
-        let startX, startY, initialX, initialY;
-        
-        smileyContainer.addEventListener('touchstart', function(e) {
-            isDragging = true;
-            startX = e.touches[0].clientX;
-            startY = e.touches[0].clientY;
-            initialX = smileyContainer.offsetLeft;
-            initialY = smileyContainer.offsetTop;
-            e.preventDefault();
-        });
-        
-        smileyContainer.addEventListener('touchmove', function(e) {
-            if (!isDragging) return;
-            
-            const currentX = e.touches[0].clientX;
-            const currentY = e.touches[0].clientY;
-            
-            const diffX = currentX - startX;
-            const diffY = currentY - startY;
-            
-            smileyContainer.style.left = (initialX + diffX) + 'px';
-            smileyContainer.style.top = (initialY + diffY) + 'px';
-            smileyContainer.style.right = 'auto';
-            smileyContainer.style.bottom = 'auto';
-            
-            e.preventDefault();
-        });
-        
-        smileyContainer.addEventListener('touchend', function() {
-            isDragging = false;
-        });
-        
-        // Add some confetti effect on smiley click
-        smileyContainer.addEventListener('click', function() {
+        celebrationBtn.addEventListener('click', function() {
+            funnyModal.style.display = 'flex';
             createConfetti();
         });
         
-        // Simple confetti effect
+        closeModal.addEventListener('click', function() {
+            funnyModal.style.display = 'none';
+            createConfetti();
+        });
+        
+        // Close modal if clicked outside
+        funnyModal.addEventListener('click', function(e) {
+            if (e.target === funnyModal) {
+                funnyModal.style.display = 'none';
+            }
+        });
+        
+        // Confetti effect
         function createConfetti() {
-            const colors = ['#ff7e5f', '#feb47b', '#4b6cb7', '#182848', '#FFD700'];
+            const colors = ['#ff7e5f', '#feb47b', '#4b6cb7', '#ffb347', '#ffffff'];
             
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 100; i++) {
                 setTimeout(() => {
                     const confetti = document.createElement('div');
-                    confetti.style.position = 'fixed';
-                    confetti.style.width = '10px';
-                    confetti.style.height = '10px';
-                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                    confetti.style.borderRadius = '50%';
-                    confetti.style.left = Math.random() * 100 + 'vw';
-                    confetti.style.top = '-10px';
-                    confetti.style.zIndex = '999';
+                    confetti.className = 'confetti';
+                    
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    const size = Math.random() * 20 + 5;
+                    
+                    confetti.style.width = `${size}px`;
+                    confetti.style.height = `${size}px`;
+                    confetti.style.background = color;
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    confetti.style.left = `${Math.random() * 100}vw`;
+                    confetti.style.opacity = '1';
                     
                     document.body.appendChild(confetti);
                     
-                    // Animate confetti falling
+                    // Animation
                     const animation = confetti.animate([
-                        { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
-                        { transform: `translateY(${window.innerHeight + 10}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                        {
+                            transform: 'translateY(0) rotate(0deg)',
+                            opacity: 1
+                        },
+                        {
+                            transform: `translateY(${window.innerHeight}px) rotate(${Math.random() * 720}deg)`,
+                            opacity: 0
+                        }
                     ], {
-                        duration: Math.random() * 2000 + 1000,
+                        duration: Math.random() * 3000 + 2000,
                         easing: 'cubic-bezier(0.215, 0.610, 0.355, 1)'
                     });
                     
                     animation.onfinish = () => {
                         confetti.remove();
                     };
-                }, i * 50);
+                }, i * 30);
             }
         }
         
-        // Add some interactive effect to wish cards
-        document.querySelectorAll('.wish-card').forEach(card => {
-            card.addEventListener('click', function() {
-                this.style.transform = 'scale(0.98)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 200);
-                
-                // Play a subtle click sound if music is playing
-                if (isPlaying) {
-                    // Create a subtle pop sound using audio context
-                    try {
-                        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                        const oscillator = audioContext.createOscillator();
-                        const gainNode = audioContext.createGain();
-                        
-                        oscillator.connect(gainNode);
-                        gainNode.connect(audioContext.destination);
-                        
-                        oscillator.frequency.value = 800;
-                        oscillator.type = 'sine';
-                        
-                        gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
-                        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
-                        
-                        oscillator.start(audioContext.currentTime);
-                        oscillator.stop(audioContext.currentTime + 0.1);
-                    } catch (e) {
-                        console.log("Audio context not supported");
-                    }
-                }
+        // Smooth scroll
+        document.querySelector('.scroll-indicator').addEventListener('click', function() {
+            window.scrollTo({
+                top: window.innerHeight,
+                behavior: 'smooth'
             });
         });
         
-        // Close modal if user clicks outside
-        window.addEventListener('click', function(event) {
-            if (event.target === musicModal) {
-                musicModal.style.display = 'none';
-                userInteracted = true;
-            }
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            createFloatingElements();
+            setupScrollAnimations();
+            
+            // Auto-play music after user interaction
+            document.body.addEventListener('click', function initAudio() {
+                if (!isPlaying) {
+                    audio.play().then(() => {
+                        playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                        playBtn.classList.add('playing');
+                        isPlaying = true;
+                    }).catch(e => {
+                        console.log("Audio play failed, waiting for button click");
+                    });
+                }
+                document.body.removeEventListener('click', initAudio);
+            });
+            
+            // Add some initial confetti
+            setTimeout(createConfetti, 1000);
+        });
+        
+        // Parallax effect for hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero-section');
+            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.5;
         });
     </script>
 </body>
