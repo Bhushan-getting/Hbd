@@ -13,9 +13,13 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
-            color: white;
+            color: #f0f0f0;
             overflow-x: hidden;
             min-height: 100vh;
         }
@@ -29,37 +33,15 @@
             height: 100%;
             z-index: -2;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(255, 100, 100, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(100, 100, 255, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(255, 255, 100, 0.1) 0%, transparent 50%);
-            animation: bgPulse 10s ease-in-out infinite;
-        }
-        
-        .floating-elements {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-        
-        .floating-element {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: float 15s infinite linear;
+                radial-gradient(circle at 20% 80%, rgba(255, 100, 100, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(100, 100, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 255, 100, 0.05) 0%, transparent 50%);
+            animation: bgPulse 15s ease-in-out infinite;
         }
         
         @keyframes bgPulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(-100vh) rotate(360deg); }
+            0%, 100% { opacity: 0.9; }
+            50% { opacity: 0.7; }
         }
         
         /* Hero Section - Fullscreen */
@@ -78,8 +60,9 @@
         .hero-content {
             opacity: 0;
             transform: translateY(30px);
-            animation: heroReveal 1.5s ease forwards 0.5s;
+            animation: heroReveal 1.2s ease-out forwards 0.5s;
             max-width: 800px;
+            padding: 0 20px;
         }
         
         @keyframes heroReveal {
@@ -90,38 +73,45 @@
         }
         
         .main-title {
-            font-size: 4.5rem;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
             background: linear-gradient(45deg, #ff7e5f, #feb47b, #4b6cb7);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             margin-bottom: 20px;
             text-shadow: 0 0 30px rgba(255, 126, 95, 0.3);
-            animation: titleGlow 2s ease-in-out infinite alternate;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+            line-height: 1.2;
         }
         
         @keyframes titleGlow {
-            from { text-shadow: 0 0 30px rgba(255, 126, 95, 0.3); }
-            to { text-shadow: 0 0 50px rgba(255, 126, 95, 0.6); }
+            from { text-shadow: 0 0 20px rgba(255, 126, 95, 0.3); }
+            to { text-shadow: 0 0 40px rgba(255, 126, 95, 0.6); }
         }
         
         .telugu-title {
-            font-size: 2.5rem;
+            font-size: clamp(1.5rem, 5vw, 2.2rem);
             color: #ffb347;
-            margin-bottom: 30px;
+            margin: 20px 0 30px;
             font-family: 'Segoe UI', 'Noto Sans Telugu', sans-serif;
             animation: fadeInUp 1s ease forwards 1s;
             opacity: 0;
+            line-height: 1.4;
+        }
+        
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .birthday-year {
-            font-size: 8rem;
+            font-size: clamp(4rem, 15vw, 8rem);
             font-weight: 900;
-            color: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.05);
             position: absolute;
             bottom: -20px;
-            right: 50px;
-            animation: yearFloat 20s linear infinite;
+            right: 20px;
+            animation: yearFloat 25s linear infinite;
+            pointer-events: none;
         }
         
         @keyframes yearFloat {
@@ -131,37 +121,42 @@
         
         .scroll-indicator {
             position: absolute;
-            bottom: 40px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
             animation: bounce 2s infinite;
             opacity: 0;
             animation-delay: 2s;
             animation-fill-mode: forwards;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            z-index: 10;
+        }
+        
+        .scroll-indicator:hover {
+            transform: translateX(-50%) scale(1.1);
         }
         
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
-            40% { transform: translateY(-20px) translateX(-50%); }
-            60% { transform: translateY(-10px) translateX(-50%); }
+            40% { transform: translateY(-15px) translateX(-50%); }
+            60% { transform: translateY(-7px) translateX(-50%); }
         }
         
         /* Content Section */
         .content-section {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 30px 30px 0 0;
-            padding: 80px 40px;
-            margin-top: -30px;
+            background: rgba(10, 10, 10, 0.95);
+            padding: 60px 20px;
             position: relative;
             z-index: 1;
+            min-height: 100vh;
         }
         
         /* Fade In Animation Classes */
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .fade-in.visible {
@@ -171,49 +166,53 @@
         
         /* Sections */
         .section {
-            margin-bottom: 60px;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            border-left: 5px solid #ff7e5f;
+            margin-bottom: 50px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            border-left: 4px solid #ff7e5f;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
         
         .section-title {
-            font-size: 2.2rem;
+            font-size: clamp(1.5rem, 4vw, 2rem);
             color: #ff7e5f;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
         
         .section-title i {
-            font-size: 2rem;
+            font-size: 1.6rem;
         }
         
         /* Messages */
         .message-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 25px;
-            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.07);
+            padding: 20px;
+            border-radius: 12px;
             margin-bottom: 20px;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .message-card:hover {
-            transform: translateX(10px);
-            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.1);
         }
         
         .simple-quote {
-            font-size: 1.8rem;
+            font-size: clamp(1.3rem, 3vw, 1.6rem);
             color: #ffb347;
             font-style: italic;
             text-align: center;
-            padding: 20px;
+            padding: 25px 20px;
             margin: 30px 0;
-            border-top: 2px solid rgba(255, 179, 71, 0.3);
-            border-bottom: 2px solid rgba(255, 179, 71, 0.3);
+            border-top: 1px solid rgba(255, 179, 71, 0.2);
+            border-bottom: 1px solid rgba(255, 179, 71, 0.2);
+            line-height: 1.6;
         }
         
         /* Celebration Plans Button */
@@ -221,19 +220,21 @@
             background: linear-gradient(45deg, #ff7e5f, #feb47b);
             color: white;
             border: none;
-            padding: 20px 40px;
-            font-size: 1.5rem;
+            padding: 18px 35px;
+            font-size: clamp(1.2rem, 3vw, 1.4rem);
             border-radius: 50px;
             cursor: pointer;
             display: block;
-            margin: 40px auto;
+            margin: 30px auto;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(255, 126, 95, 0.3);
+            box-shadow: 0 8px 25px rgba(255, 126, 95, 0.3);
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
         
         .celebration-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(255, 126, 95, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 126, 95, 0.5);
         }
         
         /* Funny Modal */
@@ -243,12 +244,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             display: none;
             align-items: center;
             justify-content: center;
             z-index: 1000;
-            animation: modalFadeIn 0.5s ease;
+            animation: modalFadeIn 0.4s ease;
+            padding: 20px;
         }
         
         @keyframes modalFadeIn {
@@ -258,65 +260,48 @@
         
         .funny-content {
             background: linear-gradient(135deg, #ff7e5f, #feb47b);
-            padding: 40px;
+            padding: 35px;
             border-radius: 20px;
             text-align: center;
             max-width: 500px;
-            margin: 20px;
-            animation: modalBounce 0.8s ease;
+            width: 100%;
+            animation: modalBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             position: relative;
             overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.2);
         }
         
         @keyframes modalBounce {
-            0% { transform: scale(0.5); opacity: 0; }
-            70% { transform: scale(1.1); opacity: 1; }
+            0% { transform: scale(0.7); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
         }
         
-        .funny-content::before {
-            content: "🎉";
-            font-size: 100px;
-            position: absolute;
-            top: -50px;
-            left: -50px;
-            opacity: 0.3;
-            transform: rotate(-45deg);
-        }
-        
-        .funny-content::after {
-            content: "🎂";
-            font-size: 100px;
-            position: absolute;
-            bottom: -50px;
-            right: -50px;
-            opacity: 0.3;
-            transform: rotate(45deg);
-        }
-        
         .funny-text {
-            font-size: 1.8rem;
-            margin-bottom: 30px;
+            font-size: clamp(1.3rem, 3vw, 1.6rem);
+            margin-bottom: 25px;
             position: relative;
             z-index: 1;
+            line-height: 1.5;
+            color: white;
         }
         
         .close-modal {
-            background: #4b6cb7;
-            color: white;
+            background: rgba(255, 255, 255, 0.9);
+            color: #ff7e5f;
             border: none;
-            padding: 12px 30px;
+            padding: 12px 35px;
             border-radius: 50px;
             font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
             z-index: 1;
+            font-weight: 600;
         }
         
         .close-modal:hover {
-            background: #182848;
-            transform: scale(1.1);
+            background: white;
+            transform: scale(1.05);
         }
         
         /* Music Player */
@@ -327,17 +312,22 @@
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-radius: 50px;
-            padding: 12px 20px;
+            padding: 10px 18px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             z-index: 100;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .music-player:hover {
+            transform: translateY(-2px);
         }
         
         .music-btn {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             background: #ff7e5f;
             border: none;
@@ -360,74 +350,120 @@
         }
         
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(76, 175, 80, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.6); }
+            70% { box-shadow: 0 0 0 12px rgba(76, 175, 80, 0); }
             100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
         }
         
-        /* Confetti */
-        .confetti {
+        /* Progress Bar */
+        .scroll-progress {
             position: fixed;
-            width: 15px;
-            height: 15px;
-            opacity: 0;
-            pointer-events: none;
-            z-index: 999;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #ff7e5f, #feb47b);
+            z-index: 101;
+            transition: width 0.3s ease;
         }
         
         /* Responsive */
         @media (max-width: 768px) {
-            .main-title {
-                font-size: 3rem;
-            }
-            
-            .telugu-title {
-                font-size: 1.8rem;
-            }
-            
-            .birthday-year {
-                font-size: 5rem;
-                right: 20px;
+            .content-section {
+                padding: 40px 15px;
             }
             
             .section {
                 padding: 20px;
+                margin-bottom: 40px;
             }
             
-            .section-title {
-                font-size: 1.8rem;
+            .simple-quote {
+                padding: 20px 15px;
+                font-size: 1.2rem;
             }
             
-            .content-section {
-                padding: 60px 20px;
+            .celebration-btn {
+                padding: 16px 30px;
+                width: 90%;
+                max-width: 300px;
+            }
+            
+            .music-player {
+                top: 15px;
+                right: 15px;
+                padding: 8px 15px;
+            }
+            
+            .music-player span {
+                display: none;
+            }
+            
+            .funny-content {
+                padding: 25px;
             }
         }
         
         @media (max-width: 480px) {
-            .main-title {
-                font-size: 2.5rem;
+            .hero-section {
+                padding: 15px;
             }
             
             .telugu-title {
-                font-size: 1.5rem;
+                margin: 15px 0 25px;
             }
             
             .birthday-year {
-                font-size: 4rem;
+                right: 10px;
+                bottom: -10px;
             }
             
-            .music-player {
-                top: 10px;
-                right: 10px;
-                padding: 8px 15px;
+            .scroll-indicator {
+                bottom: 20px;
             }
+            
+            .message-card {
+                padding: 18px;
+            }
+            
+            .close-modal {
+                padding: 12px 30px;
+                width: 100%;
+            }
+        }
+        
+        /* Performance Optimizations */
+        .will-change {
+            will-change: transform, opacity;
+        }
+        
+        /* Content Styling */
+        p, .message-card p {
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
+            line-height: 1.7;
+            color: #e0e0e0;
+            margin-bottom: 15px;
+        }
+        
+        /* Decorative elements */
+        .emoji-display {
+            font-size: clamp(2rem, 6vw, 3rem);
+            margin: 20px 0;
+            animation: floatEmoji 3s ease-in-out infinite;
+        }
+        
+        @keyframes floatEmoji {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
     </style>
 </head>
 <body>
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
     <!-- Animated Background -->
     <div class="animated-bg"></div>
-    <div class="floating-elements" id="floatingElements"></div>
     
     <!-- Background Music -->
     <audio id="birthdayAudio" loop preload="auto">
@@ -448,11 +484,11 @@
             <h1 class="main-title">Happy Birthday Aditya Anna!</h1>
             <div class="telugu-title">పుట్టినరోజు శుభాకాంక్షలు అదిత్య అన్న!</div>
             
-            <div style="margin-top: 40px;">
-                <p style="font-size: 1.3rem; opacity: 0.8; margin-bottom: 20px;">
+            <div style="margin-top: 30px;">
+                <p style="font-size: clamp(1.1rem, 2.5vw, 1.3rem); opacity: 0.9; margin-bottom: 20px;">
                     May your special day be as wonderful as you are!
                 </p>
-                <div style="font-size: 2rem; animation: heartBeat 1.5s infinite;">
+                <div class="emoji-display">
                     🎂 🎉 🎁
                 </div>
             </div>
@@ -460,50 +496,44 @@
         
         <div class="birthday-year">2026</div>
         
-        <div class="scroll-indicator">
-            <i class="fas fa-chevron-down" style="font-size: 2rem; color: #ff7e5f;"></i>
-        </div>
+        <a href="#content" class="scroll-indicator">
+            <i class="fas fa-chevron-down" style="font-size: 1.8rem; color: #ff7e5f;"></i>
+        </a>
     </section>
     
     <!-- Content Section -->
-    <section class="content-section">
+    <section class="content-section" id="content">
         <!-- Simple Quotes Section -->
-        <div class="section fade-in">
+        <div class="section fade-in will-change">
             <h2 class="section-title"><i class="fas fa-quote-left"></i> Simple Wishes</h2>
             
             <div class="simple-quote">
                 "The more you praise and celebrate your life, the more there is in life to celebrate."
             </div>
             
-            <div class="message-card fade-in">
-                <p style="font-size: 1.2rem; line-height: 1.8;">
+            <div class="message-card">
+                <p>
                     Every year with you has been a blessing. May this birthday bring you closer to all your dreams and fill your life with joy and prosperity.
                 </p>
             </div>
             
             <div class="simple-quote">
-        ఈ జన్మదినాన,
-
-        కర్ణుడిలా ధైర్యంగా ఎదగాలి,
-
-        భీష్ముడిలా విలువల్లో అచంచలంగా నిలవాలి,
-
-        సూర్యుడిలా ఆపలేని శక్తితో ప్రకాశించాలి.
-
-        నీ సంకల్పానికి ప్రతి సవాలు తలవంచాలి.
-
-        విజయభరితమైన, గర్వించదగ్గ సంవత్సరం నీది కావాలి.
-
+        ఈ జన్మదినాన,<br>
+        కర్ణుడిలా ధైర్యంగా ఎదగాలి,<br>
+        భీష్ముడిలా విలువల్లో అచంచలంగా నిలవాలి,<br>
+        సూర్యుడిలా ఆపలేని శక్తితో ప్రకాశించాలి.<br>
+        నీ సంకల్పానికి ప్రతి సవాలు తలవంచాలి.<br>
+        విజయభరితమైన, గర్వించదగ్గ సంవత్సరం నీది కావాలి.<br>
         జన్మదిన శుభాకాంక్షలు! ⚔️✨
             </div> 
         </div>
         
-        <!-- Celebration Plans (Funny Button) -->
-        <div class="section fade-in">
+        <!-- Celebration Plans -->
+        <div class="section fade-in will-change">
             <h2 class="section-title"><i class="fas fa-calendar-alt"></i> Celebration Plans</h2>
             
             <div class="message-card">
-                <p style="font-size: 1.2rem; line-height: 1.8;">
+                <p>
                     We had so many plans to celebrate your special day - party, trip, surprises... but looks like someone had other plans! 😉
                 </p>
             </div>
@@ -514,35 +544,38 @@
         </div>
         
         <!-- Heartfelt Message -->
-        <div class="section fade-in">
+        <div class="section fade-in will-change">
             <h2 class="section-title"><i class="fas fa-heart"></i> From All of Us</h2>
             
             <div class="message-card">
-                <p style="font-size: 1.2rem; line-height: 1.8;">
+                <p>
                     You are an amazing person who brings light wherever you go. Your kindness, wisdom, and humor make you special to everyone.
                 </p>
             </div>
             
-             <div class="simple-quote">
+            <div class="simple-quote">
         "మీరు అద్భుతమైన వ్యక్తి, మీకు ఎప్పటికీ ఆరోగ్యం, సంతోషం ఉండాలని కోరుకుంటున్నాము. మీ భార్య ఎప్పుడూ మా ఆయన ఆయావుడే అన చెబుతుంది 😂"
-             </div> 
+            </div> 
             
             <div class="message-card">
-                <p style="font-size: 1.2rem; line-height: 1.8;">
+                <p>
                     May this year bring you success in all your endeavors, good health, and moments that become beautiful memories.
                 </p>
             </div>
         </div>
         
         <!-- Final Wish -->
-        <div class="section fade-in" style="text-align: center; background: rgba(255, 126, 95, 0.1);">
+        <div class="section fade-in will-change" style="text-align: center; background: rgba(255, 126, 95, 0.08); border-color: #ffb347;">
             <h2 class="section-title"><i class="fas fa-star"></i> Once Again</h2>
-            <div style="font-size: 2.5rem; color: #ffb347; margin: 30px 0;">
+            <div style="font-size: clamp(1.8rem, 4vw, 2.2rem); color: #ffb347; margin: 25px 0; line-height: 1.4;">
                 Happy Birthday Anna! 🎈
             </div>
-            <p style="font-size: 1.3rem; opacity: 0.9;">
+            <p style="font-size: clamp(1.1rem, 2.5vw, 1.3rem); opacity: 0.9; margin-bottom: 15px;">
                 With lots of love and best wishes from everyone who cares about you!
             </p>
+            <div class="emoji-display" style="margin: 20px 0;">
+                🎂 🎁 🥳
+            </div>
         </div>
     </section>
     
@@ -550,48 +583,42 @@
     <div class="funny-modal" id="funnyModal">
         <div class="funny-content">
             <div class="funny-text">
-                Uh-oh! 😄 <br> <br>
-        Looks like the celebration plans are canceled.<br><br>
-        But hey…
-        curiosity made you click this, didn’t it? 😂 <br><br>
-        All good! <br>
-        We’ll celebrate whenever the mood strikes 🎉✨ 
+                Uh-oh! 😄 <br><br>
+                Looks like the celebration plans are canceled.<br><br>
+                But hey… curiosity made you click this, didn't it? 😂 <br><br>
+                All good! <br>
+                We'll celebrate whenever the mood strikes 🎉✨ 
             </div>
             <button class="close-modal" id="closeModal">OK, Got it! 😄</button>
         </div>
     </div>
 
     <script>
-        // Create floating background elements
+        // Performance optimization - throttle scroll events
+        let scrollTimeout;
+        
+        // Create subtle floating elements for background
         function createFloatingElements() {
-            const container = document.getElementById('floatingElements');
-            const colors = [
-                'rgba(255, 126, 95, 0.2)',
-                'rgba(254, 180, 123, 0.2)',
-                'rgba(75, 108, 183, 0.2)',
-                'rgba(255, 179, 71, 0.2)'
-            ];
-            
-            for (let i = 0; i < 20; i++) {
+            const bg = document.querySelector('.animated-bg');
+            for (let i = 0; i < 8; i++) {
                 const element = document.createElement('div');
-                element.className = 'floating-element';
-                
-                const size = Math.random() * 100 + 20;
-                const color = colors[Math.floor(Math.random() * colors.length)];
-                
-                element.style.width = `${size}px`;
-                element.style.height = `${size}px`;
-                element.style.background = color;
-                element.style.left = `${Math.random() * 100}%`;
-                element.style.top = `${Math.random() * 100}%`;
-                element.style.animationDuration = `${Math.random() * 20 + 10}s`;
-                element.style.animationDelay = `${Math.random() * 5}s`;
-                
-                container.appendChild(element);
+                element.style.cssText = `
+                    position: absolute;
+                    width: ${Math.random() * 60 + 20}px;
+                    height: ${Math.random() * 60 + 20}px;
+                    background: rgba(255, 255, 255, 0.03);
+                    border-radius: 50%;
+                    top: ${Math.random() * 100}%;
+                    left: ${Math.random() * 100}%;
+                    animation: float ${Math.random() * 20 + 20}s linear infinite;
+                    animation-delay: ${Math.random() * 5}s;
+                    pointer-events: none;
+                `;
+                bg.appendChild(element);
             }
         }
         
-        // Scroll animations
+        // Scroll animations with Intersection Observer
         function setupScrollAnimations() {
             const fadeElements = document.querySelectorAll('.fade-in');
             
@@ -603,7 +630,7 @@
                 });
             }, {
                 threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
+                rootMargin: '0px 0px -20px 0px'
             });
             
             fadeElements.forEach(element => {
@@ -611,29 +638,45 @@
             });
         }
         
-        // Music player
+        // Scroll progress indicator
+        function setupScrollProgress() {
+            const progressBar = document.getElementById('scrollProgress');
+            
+            window.addEventListener('scroll', () => {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                progressBar.style.width = scrolled + '%';
+            });
+        }
+        
+        // Music player with better error handling
         const audio = document.getElementById('birthdayAudio');
         const playBtn = document.getElementById('playBtn');
         let isPlaying = false;
         
-        audio.volume = 0.3;
+        // Set volume lower for better experience
+        audio.volume = 0.25;
         
-        playBtn.addEventListener('click', function() {
-            if (isPlaying) {
-                audio.pause();
-                playBtn.innerHTML = '<i class="fas fa-play"></i>';
-                playBtn.classList.remove('playing');
-            } else {
-                audio.play().then(() => {
+        playBtn.addEventListener('click', async function() {
+            try {
+                if (isPlaying) {
+                    await audio.pause();
+                    playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    playBtn.classList.remove('playing');
+                } else {
+                    await audio.play();
                     playBtn.innerHTML = '<i class="fas fa-pause"></i>';
                     playBtn.classList.add('playing');
-                }).catch(e => {
-                    console.log("Autoplay prevented:", e);
-                    // User interaction needed, show alert
-                    alert("Please click the music button again to play birthday music!");
-                });
+                }
+                isPlaying = !isPlaying;
+            } catch (error) {
+                console.log("Audio play failed:", error);
+                playBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+                setTimeout(() => {
+                    playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                }, 1500);
             }
-            isPlaying = !isPlaying;
         });
         
         // Funny modal
@@ -648,7 +691,6 @@
         
         closeModal.addEventListener('click', function() {
             funnyModal.style.display = 'none';
-            createConfetti();
         });
         
         // Close modal if clicked outside
@@ -658,86 +700,95 @@
             }
         });
         
-        // Confetti effect
+        // Optimized confetti effect
         function createConfetti() {
-            const colors = ['#ff7e5f', '#feb47b', '#4b6cb7', '#ffb347', '#ffffff'];
+            const colors = ['#ff7e5f', '#feb47b', '#4b6cb7', '#ffb347'];
             
-            for (let i = 0; i < 100; i++) {
+            for (let i = 0; i < 60; i++) {
                 setTimeout(() => {
                     const confetti = document.createElement('div');
-                    confetti.className = 'confetti';
-                    
-                    const color = colors[Math.floor(Math.random() * colors.length)];
-                    const size = Math.random() * 20 + 5;
-                    
-                    confetti.style.width = `${size}px`;
-                    confetti.style.height = `${size}px`;
-                    confetti.style.background = color;
-                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
-                    confetti.style.left = `${Math.random() * 100}vw`;
-                    confetti.style.opacity = '1';
+                    confetti.style.cssText = `
+                        position: fixed;
+                        width: ${Math.random() * 10 + 5}px;
+                        height: ${Math.random() * 10 + 5}px;
+                        background: ${colors[Math.floor(Math.random() * colors.length)]};
+                        border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+                        left: ${Math.random() * 100}%;
+                        top: -20px;
+                        opacity: 0;
+                        pointer-events: none;
+                        z-index: 999;
+                    `;
                     
                     document.body.appendChild(confetti);
                     
-                    // Animation
                     const animation = confetti.animate([
-                        {
-                            transform: 'translateY(0) rotate(0deg)',
-                            opacity: 1
-                        },
-                        {
-                            transform: `translateY(${window.innerHeight}px) rotate(${Math.random() * 720}deg)`,
-                            opacity: 0
-                        }
+                        { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                        { transform: `translateY(${window.innerHeight}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
                     ], {
-                        duration: Math.random() * 3000 + 2000,
+                        duration: Math.random() * 2000 + 1500,
                         easing: 'cubic-bezier(0.215, 0.610, 0.355, 1)'
                     });
                     
-                    animation.onfinish = () => {
-                        confetti.remove();
-                    };
-                }, i * 30);
+                    animation.onfinish = () => confetti.remove();
+                }, i * 40);
             }
         }
         
-        // Smooth scroll
-        document.querySelector('.scroll-indicator').addEventListener('click', function() {
-            window.scrollTo({
-                top: window.innerHeight,
-                behavior: 'smooth'
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
         
-        // Initialize everything
+        // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
             createFloatingElements();
             setupScrollAnimations();
+            setupScrollProgress();
             
-            // Auto-play music after user interaction
-            document.body.addEventListener('click', function initAudio() {
+            // Auto-play music after any interaction
+            const initAudio = () => {
                 if (!isPlaying) {
                     audio.play().then(() => {
                         playBtn.innerHTML = '<i class="fas fa-pause"></i>';
                         playBtn.classList.add('playing');
                         isPlaying = true;
-                    }).catch(e => {
-                        console.log("Audio play failed, waiting for button click");
+                    }).catch(() => {
+                        // Audio autoplay blocked, wait for button click
                     });
                 }
                 document.body.removeEventListener('click', initAudio);
-            });
+            };
             
-            // Add some initial confetti
-            setTimeout(createConfetti, 1000);
+            document.body.addEventListener('click', initAudio);
         });
         
-        // Parallax effect for hero section
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero-section');
-            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-            hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.5;
+        // Optimized scroll handler for parallax
+        window.addEventListener('scroll', () => {
+            if (scrollTimeout) return;
+            
+            scrollTimeout = setTimeout(() => {
+                const scrolled = window.pageYOffset;
+                const hero = document.querySelector('.hero-section');
+                
+                // Subtle parallax effect
+                hero.style.transform = `translateY(${scrolled * 0.4}px)`;
+                hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.7;
+                
+                scrollTimeout = null;
+            }, 16); // ~60fps
         });
     </script>
 </body>
